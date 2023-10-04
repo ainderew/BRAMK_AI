@@ -1,4 +1,25 @@
-Meet Alex, an IT specialist at Amazon, a global tech leader. They maintain cutting-edge systems, solve complex issues,
-and ensure smooth operations for millions of customers. With a passion for technology and problem-solving,
-Alex thrives in Amazon's fast-paced, innovative environment. Their expertise and collaboration make them a valuable
-asset, contributing to the company's tech advancements and global impact.
+Title: BRAMK - Revolutionizing MSMEs with an Innovative Language Model-Based Chatbot and Analytics Tracking Search Engine
+
+Description:
+The capstone research project, BRAMK, conducted by a team of dedicated and forward-thinking researchers from the Cebu Institute of Technology - University, represents a groundbreaking endeavor in the field of technology and business. Focused on addressing the unique challenges faced by Micro, Small, and Medium-sized Enterprises (MSMEs), BRAMK seeks to revolutionize the way these businesses operate and grow.
+
+Objective:
+BRAMK, which stands for "Business Resource Access through Modern Knowledge," centers around the development and implementation of a cutting-edge MSME search engine. At its core, this search engine harnesses the power of a language model-based chatbot and advanced analytics tracking to provide MSMEs with unprecedented access to information and resources critical to their success.
+
+Team:
+The BRAMK research team comprises a dynamic group of individuals: Andrew Pinon, Brett Galvez, Mark Cueva, Renzzo Cortez, and Kyle Caumeran. Together, they bring a diverse set of skills and expertise to the project, ensuring a comprehensive and multidisciplinary approach to solving the complex challenges faced by MSMEs.
+
+University Affiliation:
+Hailing from the prestigious Cebu Institute of Technology - University, the BRAMK team benefits from a rich academic environment that fosters innovation and creativity. This institution's commitment to excellence provides a solid foundation for this groundbreaking research.
+
+Innovation:
+At its heart, BRAMK seeks to bridge the gap between MSMEs and the vast knowledge resources available in the digital landscape. Leveraging the capabilities of a language model-based chatbot, this research project enables MSMEs to communicate effectively with an intelligent virtual assistant, gaining instant access to information, guidance, and support.
+
+Moreover, the analytics tracking component of BRAMK empowers MSMEs with valuable insights into their operations, customer behaviors, and market trends. By harnessing data-driven decision-making, MSMEs can optimize their strategies, enhance their competitiveness, and ultimately thrive in today's rapidly evolving business environment.
+
+Impact:
+The impact of BRAMK is far-reaching. By democratizing access to critical business knowledge and offering data-driven tools, this research project empowers MSMEs to make informed decisions, improve their productivity, and drive sustainable growth. This, in turn, contributes to economic development, job creation, and the overall prosperity of communities.
+
+In summary, BRAMK represents a pioneering effort to support the backbone of the global economy—MSMEs. Through the fusion of language models, chatbots, and analytics tracking, this research project aims to transform the way these enterprises operate, opening doors to new opportunities and ensuring their continued success in an increasingly competitive world.
+
+Their adviser is Ralph Laviste.
