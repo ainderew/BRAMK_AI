@@ -24,6 +24,13 @@ app.post("/", async (req, res) => {
   res.send(val)
 });
 
+app.get("/test",(req, res) =>{
+  console.log("VISIT")
+  res.send({
+    message: "HELLO"
+  })
+})
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
 });

@@ -23,3 +23,13 @@ The impact of BRAMK is far-reaching. By democratizing access to critical busines
 In summary, BRAMK represents a pioneering effort to support the backbone of the global economy—MSMEs. Through the fusion of language models, chatbots, and analytics tracking, this research project aims to transform the way these enterprises operate, opening doors to new opportunities and ensuring their continued success in an increasingly competitive world.
 
 Their adviser is Ralph Laviste.
+
+
+
+(specific)Leona's is a cake shop in Cebu, City
+Leona's was founded 2011 and spacializes in custom cakes
+Leona's is located at Mabolo, SM Cebu city
+Leona's avaiable services include: custom cakes, premade pastries, coffee
+
+
+Cake available Carrot cake price 100, Mango cake 200 Philippine peso
