@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { main } from "../..";
+import { main } from "../../index.js";
 
 
 const app = express();

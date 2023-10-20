@@ -3,9 +3,9 @@
   "type": "module",
   "version": "0.1.0",
   "description": "LangChain-based QA package with AI interaction for document-based question-answering.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "bun server/src/server.js"
+    "dev": "node server/src/server.js"
   },
   "keywords": [
     "chatbot",
