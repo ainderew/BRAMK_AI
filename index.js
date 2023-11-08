@@ -1,5 +1,4 @@
 import "dotenv/config";
-import readline from "readline";
 import fs from "fs";
 import path from "path";
 import { ChatOpenAI } from "langchain/chat_models/openai";
@@ -16,14 +15,13 @@ import { TextLoader } from "langchain/document_loaders/fs/text";
 import { CSVLoader } from "langchain/document_loaders/fs/csv";
 import { NotionLoader } from "langchain/document_loaders/fs/notion";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
-
+import getDataSourceFromUploadThing from "./retrieveUploadThing.js";
 // Constants
 const DATA_DIR = "./data";
 // const OPENAI_API_MODEL_NAME = 'gpt-3.5-turbo';
 const OPENAI_API_MODEL_NAME = "gpt-4";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-// Entry point of the application
 export async function main(query) {
   const chain = await setupLLMChain();
   const result = await endlessLoop(chain, query);
@@ -33,11 +31,14 @@ export async function main(query) {
 // Load documents to LLM and create a retrieval chain
 async function setupLLMChain() {
   console.log("Loading documents...");
-  const plainDocs = await loadPlainDocuments();
-  const markdownDocs = await loadMarkdownDocuments();
-  const pdfDocs = await loadPdfDocuments();
-  const docs = [...plainDocs, ...markdownDocs, ...pdfDocs];
+  // const plainDocs = await loadPlainDocuments();
+  // const markdownDocs = await loadMarkdownDocuments();
+  // const pdfDocs = await loadPdfDocuments();
+  // const docs = [...plainDocs, ...markdownDocs, ...pdfDocs];
+  const plain = await getDataSourceFromUploadThing();
+  const docs = [plain];
   console.log("Documents loaded.");
+  console.log(docs)
 
   console.log("Splitting documents...");
   const splitDocs = await splitDocuments(docs);
@@ -53,6 +54,7 @@ async function setupLLMChain() {
     openAIApiKey: OPENAI_API_KEY,
     temperature: 0,
   });
+
 
   return RetrievalQAChain.fromLLM(model, vectorStore.asRetriever(), {
     returnSourceDocuments: true,
@@ -113,26 +115,6 @@ async function storeDocuments(splitDocs) {
 
 // Endless loop to take user input and get responses from GPT
 async function endlessLoop(chain, query) {
-  // const rl = readline.createInterface({
-  //     input: process.stdin,
-  //     output: process.stdout
-  // });
-
-  // while (true) {
-  //     try {
-  //         const query = await new Promise((resolve) => {
-  //             rl.question('\x1b[33mEnter your question (or type "exit" to quit): \x1b[0m', (answer) => {
-  //                 resolve(answer.trim());
-  //             });
-  //         });
-
-  //         if (query.toLowerCase() === 'exit') {
-  //             console.log('\x1b[32mExiting the loop...\x1b[0m');
-  //             rl.close();
-  //             break;
-  //         }
-
-  //         console.log('\x1b[36mYou entered:\x1b[0m', `${query}`);
 
   const response = await chain.call({
     query: query,
@@ -140,12 +122,6 @@ async function endlessLoop(chain, query) {
 
   return response.text;
 
-  //     console.log('\x1b[32mAI answered:\x1b[0m', `${response.text}`);
-  //     console.log('\x1b[32mSource Document:\x1b[0m', `${response.sourceDocuments[0].metadata.source}`);
-  // } catch (error) {
-  //     console.error('An error occurred:', error);
-  // }
-  // }
 }
 
 // Function to recursively scan a directory for PDF files

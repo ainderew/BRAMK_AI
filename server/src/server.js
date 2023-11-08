@@ -16,18 +16,17 @@ app.use(bodyParser.json());
 
 app.post("/", async (req, res) => {
   const data  = req.body.data;
-  console.log(data[data.length - 1].content)
-  console.log("data")
-  console.log(data)
 
   const val = await main(data[data.length - 1].content)
   res.send(val)
 });
 
-app.get("/test",(req, res) =>{
-  console.log("VISIT")
+// to test if api is available
+app.get("/test",async (req, res) =>{
+  const val = await main("who is andrew pinon")
   res.send({
-    message: "HELLO"
+    message: "HELLO",
+    test: val
   })
 })
 

@@ -106,21 +106,6 @@ async function storeDocuments(splitDocs) {
 
 // Endless loop to take user input and get responses from GPT
 export async function queryMLL(ai, query) {
-  // while (true) {
-  //     try {
-  //   const query = await new Promise((resolve) => {
-  //       rl.question('\x1b[33mEnter your question (or type "exit" to quit): \x1b[0m', (answer) => {
-  //           resolve(answer.trim());
-  //       });
-  //   });
-
-  //   if (query.toLowerCase() === 'exit') {
-  //       console.log('\x1b[32mExiting the loop...\x1b[0m');
-  //       rl.close();
-  //       break;
-  //   }
-
-  //   console.log('\x1b[36mYou entered:\x1b[0m', `${query}`);
 
   const response = await ai.call({
     query: query,
@@ -128,12 +113,7 @@ export async function queryMLL(ai, query) {
 
   return response.text;
 
-  //         console.log('\x1b[32mAI answered:\x1b[0m', `${response.text}`);
-  //         console.log('\x1b[32mSource Document:\x1b[0m', `${response.sourceDocuments[0].metadata.source}`);
-  //     } catch (error) {
-  //         console.error('An error occurred:', error);
-  //     }
-  // }
+  
 }
 
 // Function to recursively scan a directory for PDF files
