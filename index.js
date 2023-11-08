@@ -31,12 +31,12 @@ export async function main(query) {
 // Load documents to LLM and create a retrieval chain
 async function setupLLMChain() {
   console.log("Loading documents...");
-  // const plainDocs = await loadPlainDocuments();
-  // const markdownDocs = await loadMarkdownDocuments();
-  // const pdfDocs = await loadPdfDocuments();
-  // const docs = [...plainDocs, ...markdownDocs, ...pdfDocs];
-  const plain = await getDataSourceFromUploadThing();
-  const docs = [plain];
+  const plainDocs = await loadPlainDocuments();
+  const markdownDocs = await loadMarkdownDocuments();
+  const pdfDocs = await loadPdfDocuments();
+  const docs = [...plainDocs, ...markdownDocs, ...pdfDocs];
+  // const plain = await getDataSourceFromUploadThing();
+  // const docs = [plain];
   console.log("Documents loaded.");
   console.log(docs)
 
