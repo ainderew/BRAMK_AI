@@ -17,13 +17,14 @@ app.use(bodyParser.json());
 app.post("/", async (req, res) => {
   const data  = req.body.data;
 
-  const val = await main(data[data.length - 1].content)
+  const val = await main({query:data[data.length - 1].content, isSpecific:false})
   res.send(val)
 });
 
 // to test if api is available
 app.get("/test",async (req, res) =>{
-  const val = await main("who is andrew pinon")
+  console.log("HIT")
+  const val = await main({query: "who is andrew pinon", isSpecific: true});
   res.send({
     message: "HELLO",
     test: val

@@ -22,21 +22,30 @@ const DATA_DIR = "./data";
 const OPENAI_API_MODEL_NAME = "gpt-4";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-export async function main(query) {
-  const chain = await setupLLMChain();
+export async function main(options) {
+
+  const {query, isSpecific} = options
+  const chain = await setupLLMChain(isSpecific);
   const result = await endlessLoop(chain, query);
   return result
 }
 
 // Load documents to LLM and create a retrieval chain
-async function setupLLMChain() {
+async function setupLLMChain(isSpecific) {
+  let docs;
   console.log("Loading documents...");
-  const plainDocs = await loadPlainDocuments();
-  const markdownDocs = await loadMarkdownDocuments();
-  const pdfDocs = await loadPdfDocuments();
-  const docs = [...plainDocs, ...markdownDocs, ...pdfDocs];
-  // const plain = await getDataSourceFromUploadThing();
-  // const docs = [plain];
+  if(isSpecific){
+    const ut_key = await getDataSourceFromUploadThing("1606bf56-acd1-4ff0-851b-3c93e46b33d1-etr8bp.txt")
+    const plainDocs = await loadPlainDocuments(ut_key);
+    const markdownDocs = await loadMarkdownDocuments();
+    const pdfDocs = await loadPdfDocuments();
+    docs = [...plainDocs,...markdownDocs, ...pdfDocs];
+  }else{
+    const plainDocs = await loadPlainDocuments();
+    const markdownDocs = await loadMarkdownDocuments();
+    const pdfDocs = await loadPdfDocuments();
+    docs = [...plainDocs, ...markdownDocs, ...pdfDocs];
+  }
   console.log("Documents loaded.");
   console.log(docs)
 
@@ -62,9 +71,14 @@ async function setupLLMChain() {
 }
 
 // Load documents from the specified directory
-async function loadPlainDocuments() {
+async function loadPlainDocuments(path=null) {
+  let NEW_DIR = DATA_DIR;
+  if(path){
+    NEW_DIR = `${DATA_DIR}/${path}`
+  }
+  console.log(NEW_DIR)
   const loader = new DirectoryLoader(
-    DATA_DIR,
+    NEW_DIR,
     {
       ".json": (path) => new JSONLoader(path),
       ".txt": (path) => new TextLoader(path),

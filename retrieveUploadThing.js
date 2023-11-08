@@ -1,13 +1,12 @@
 // const https = require("https");
 import https from "https"
 import { UTApi } from "uploadthing/server";
+import fs from 'fs'
 
 const utapi = new UTApi();
 
-export default async function getDataSourceFromUploadThing() {
-  const test = await utapi.getFileUrls(
-    "1606bf56-acd1-4ff0-851b-3c93e46b33d1-etr8bp.txt"
-  );
+export default async function getDataSourceFromUploadThing(ut_key) {
+  const test = await utapi.getFileUrls(ut_key);
 
   async function downloadTextFileFromBlob() {
     const blobUrl = test[0].url;
@@ -30,7 +29,12 @@ export default async function getDataSourceFromUploadThing() {
         });
     });
   }
-  const g = await downloadTextFileFromBlob();
+  const retrievedTextFile = await downloadTextFileFromBlob();
 
-  return g;
+  const dir = `./data/${ut_key}`;
+  if(!fs.existsSync(dir)){
+    fs.mkdirSync(dir, {recursive:true});
+    fs.writeFileSync(`./data/${ut_key}/${ut_key}`, retrievedTextFile);
+  }
+  return ut_key;
 }
