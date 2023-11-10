@@ -24,19 +24,19 @@ const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 export async function main(options) {
 
-  const {query, isSpecific} = options
-  const chain = await setupLLMChain(isSpecific);
+  const {query, isSpecific, UT_key} = options
+  const chain = await setupLLMChain(isSpecific, UT_key);
   const result = await endlessLoop(chain, query);
   return result
 }
 
 // Load documents to LLM and create a retrieval chain
-async function setupLLMChain(isSpecific) {
+async function setupLLMChain(isSpecific, ut_key) {
   let docs;
   console.log("Loading documents...");
   if(isSpecific){
-    const ut_key = await getDataSourceFromUploadThing("1606bf56-acd1-4ff0-851b-3c93e46b33d1-etr8bp.txt")
-    const plainDocs = await loadPlainDocuments(ut_key);
+    const file = await getDataSourceFromUploadThing(ut_key)
+    const plainDocs = await loadPlainDocuments(file);
     const markdownDocs = await loadMarkdownDocuments();
     const pdfDocs = await loadPdfDocuments();
     docs = [...plainDocs,...markdownDocs, ...pdfDocs];
@@ -47,7 +47,6 @@ async function setupLLMChain(isSpecific) {
     docs = [...plainDocs, ...markdownDocs, ...pdfDocs];
   }
   console.log("Documents loaded.");
-  console.log(docs)
 
   console.log("Splitting documents...");
   const splitDocs = await splitDocuments(docs);

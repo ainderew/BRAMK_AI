@@ -38,3 +38,65 @@ Andrew Pinon is a software engineertesttesttest newtest new==6469ad04-10a5-423c-
 
 Techpal is a computer store in cebu city
 estaeasdfaeta
+
+==f385d7da-a943-43c2-8075-5ffaf539fdcc-pgcqt.txt==
+Laptops:
+
+Gaming Laptops:
+
+Acer Predator Helios 300: Starting from $999
+ASUS ROG Strix Scar III: Starting from $1,299
+MSI GS66 Stealth: Starting from $1,499
+Business Laptops:
+
+Dell XPS 13: Starting from $899
+HP Elite Dragonfly: Starting from $1,299
+Lenovo ThinkPad X1 Carbon: Starting from $1,199
+Desktops:
+
+Gaming Desktops:
+
+Alienware Aurora R10: Starting from $1,199
+CyberPowerPC Gamer Xtreme VR: Starting from $999
+HP Omen Obelisk: Starting from $1,099
+Workstation/Desktop PCs:
+Store Name: Octagon Tech Hub
+
+Description:
+Welcome to Octagon Tech Hub, where innovation meets affordability! At Octagon, we're passionate about technology and committed to providing our customers with top-notch products and exceptional service. Our store is a haven for tech enthusiasts, offering a wide range of cutting-edge gadgets, computers, and accessories to cater to every need and budget. Whether you're a student, a creative professional, or a hardcore gamer, Octagon Tech Hub is your one-stop destination for all things tech.
+
+Location: Mabolo Cebu, Cebu City
+
+Apple iMac 27-inch: Starting from $1,799
+Dell Inspiron 27 7000: Starting from $999
+Microsoft Surface Studio 2: Starting from $3,499
+Peripherals and Accessories:
+
+Keyboards:
+
+Logitech G Pro Mechanical Keyboard: $129
+Corsair K95 RGB Platinum XT: $199
+Mice:
+
+Razer DeathAdder Elite: $69
+SteelSeries Rival 600: $79
+Monitors:
+
+Dell S2719DGF 27-inch Gaming Monitor: $349
+ASUS ProArt PA278QV 27-inch Monitor: $299
+Storage:
+
+Samsung 970 EVO Plus NVMe M.2 SSD (500GB): $99
+Seagate BarraCuda 2TB HDD: $59
+Graphics Cards:
+
+NVIDIA GeForce RTX 3070: Starting from $499
+AMD Radeon RX 6800 XT: Starting from $649
+Networking:
+
+ASUS RT-AX88U AX6000 Dual-Band Wi-Fi Router: $299
+TP-Link 8-Port Gigabit Ethernet Switch: $29
+==f385d7da-a943-43c2-8075-5ffaf539fdcc-pgcqt.txt==
+==485bf6bf-1de0-4244-9621-e5e2da51918a-l8lovk.txt==
+test
+==485bf6bf-1de0-4244-9621-e5e2da51918a-l8lovk.txt==
