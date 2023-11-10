@@ -15,10 +15,10 @@ import { TextLoader } from "langchain/document_loaders/fs/text";
 import { CSVLoader } from "langchain/document_loaders/fs/csv";
 import { NotionLoader } from "langchain/document_loaders/fs/notion";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
-import getDataSourceFromUploadThing from "./retrieveUploadThing.js";
+import {getDataSourceFromUploadThing} from "./retrieveUploadThing.js";
+
 // Constants
 const DATA_DIR = "./data";
-// const OPENAI_API_MODEL_NAME = 'gpt-3.5-turbo';
 const OPENAI_API_MODEL_NAME = "gpt-4";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
@@ -122,12 +122,10 @@ async function splitDocuments(docs) {
   return textSplitter.splitDocuments(docs);
 }
 
-// Store split documents in the memory vector store
 async function storeDocuments(splitDocs) {
   return MemoryVectorStore.fromDocuments(splitDocs, new OpenAIEmbeddings());
 }
 
-// Endless loop to take user input and get responses from GPT
 async function endlessLoop(chain, query) {
 
   const response = await chain.call({
@@ -138,7 +136,6 @@ async function endlessLoop(chain, query) {
 
 }
 
-// Function to recursively scan a directory for PDF files
 function scanForPDFs(directory) {
   const pdfFiles = [];
 
@@ -160,6 +157,3 @@ function scanForPDFs(directory) {
   scanDir(directory);
   return pdfFiles;
 }
-
-// Start the application
-// await main();
