@@ -19,8 +19,6 @@ console.log(req.body)
     isSpecific = true;
   }
 console.log("RESPONSE HIT")
-  console.log(UT_key)
-  console.log(isSpecific)
   const val = await main({
     query: data[data.length - 1].content,
     isSpecific: isSpecific,

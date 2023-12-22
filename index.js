@@ -17,9 +17,10 @@ import { NotionLoader } from "langchain/document_loaders/fs/notion";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 import {getDataSourceFromUploadThing} from "./retrieveUploadThing.js";
 
-// Constants
+
+// Constants 
 const DATA_DIR = "./data";
-const OPENAI_API_MODEL_NAME = "gpt-4";
+const OPENAI_API_MODEL_NAME = "gpt-4"; // DO NOT TOUCH AKO NI GI SET PARA MAS MO LESS BAYRANAN -Andrew Pinon
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 export async function main(options) {
@@ -33,7 +34,7 @@ export async function main(options) {
 // Load documents to LLM and create a retrieval chain
 async function setupLLMChain(isSpecific, ut_key) {
   let docs;
-  console.log("Loading documents...");
+
   if(isSpecific){
     const file = await getDataSourceFromUploadThing(ut_key)
     const plainDocs = await loadPlainDocuments(file);
@@ -46,17 +47,9 @@ async function setupLLMChain(isSpecific, ut_key) {
     const pdfDocs = await loadPdfDocuments();
     docs = [...plainDocs, ...markdownDocs, ...pdfDocs];
   }
-  console.log("Documents loaded.");
 
-  console.log("Splitting documents...");
   const splitDocs = await splitDocuments(docs);
-  console.log("Documents split.");
-
-  console.log("Storing documents to memory vector store...");
   const vectorStore = await storeDocuments(splitDocs);
-  console.log("Documents stored to memory vector store.");
-
-  console.log("Creating retrieval chain...");
   const model = new ChatOpenAI({
     modelName: OPENAI_API_MODEL_NAME,
     openAIApiKey: OPENAI_API_KEY,
@@ -90,14 +83,12 @@ async function loadPlainDocuments(path=null) {
   return loader.load();
 }
 
-// Load markdown documents from the specified directory
 async function loadMarkdownDocuments() {
   const loader = new NotionLoader(DATA_DIR);
 
   return await loader.load();
 }
 
-// Load PDF documents from the specified directory
 async function loadPdfDocuments() {
   let pdfs = [];
   const fileNames = scanForPDFs(DATA_DIR);
