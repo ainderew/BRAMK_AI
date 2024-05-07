@@ -21,7 +21,8 @@ import {getDataSourceFromUploadThing} from "./retrieveUploadThing.js";
 // Constants 
 const DATA_DIR = "./data";
 const OPENAI_API_MODEL_NAME = "gpt-4"; // DO NOT TOUCH AKO NI GI SET PARA MAS MO LESS BAYRANAN -Andrew Pinon
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const OPENAI_API_KEY = process.env.OPENAI_KEY
+console.log(OPENAI_API_KEY)
 
 export async function main(options) {
 
@@ -36,11 +37,11 @@ async function setupLLMChain(isSpecific, ut_key) {
   let docs;
 
   if(isSpecific){
-    const file = await getDataSourceFromUploadThing(ut_key)
-    const plainDocs = await loadPlainDocuments(file);
+    // const file = await getDataSourceFromUploadThing(ut_key)
+    // const plainDocs = await loadPlainDocuments(file);
     const markdownDocs = await loadMarkdownDocuments();
     const pdfDocs = await loadPdfDocuments();
-    docs = [...plainDocs,...markdownDocs, ...pdfDocs];
+    docs = [...markdownDocs, ...pdfDocs];
   }else{
     const plainDocs = await loadPlainDocuments();
     const markdownDocs = await loadMarkdownDocuments();
@@ -48,14 +49,14 @@ async function setupLLMChain(isSpecific, ut_key) {
     docs = [...plainDocs, ...markdownDocs, ...pdfDocs];
   }
 
-  const splitDocs = await splitDocuments(docs);
-  const vectorStore = await storeDocuments(splitDocs);
   const model = new ChatOpenAI({
     modelName: OPENAI_API_MODEL_NAME,
     openAIApiKey: OPENAI_API_KEY,
     temperature: 0,
   });
 
+  const splitDocs = await splitDocuments(docs);
+  const vectorStore = await storeDocuments(splitDocs);
 
   return RetrievalQAChain.fromLLM(model, vectorStore.asRetriever(), {
     returnSourceDocuments: true,
@@ -113,7 +114,7 @@ async function splitDocuments(docs) {
 }
 
 async function storeDocuments(splitDocs) {
-  return MemoryVectorStore.fromDocuments(splitDocs, new OpenAIEmbeddings());
+  return MemoryVectorStore.fromDocuments(splitDocs, new OpenAIEmbeddings({openAIApiKey:OPENAI_API_KEY},{apiKey:OPENAI_API_KEY}));
 }
 
 async function endlessLoop(chain, query) {
